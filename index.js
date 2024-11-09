@@ -41,8 +41,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Write your code here//
 
 //CHALLENGE 1: GET All posts
-
+app.get("/all", (req, res)=>{
+  res.json(posts);
+});
 //CHALLENGE 2: GET a specific post by id
+app.get("/post/:id", (req, res)=>{
+  const id = parseInt(req.params.id);
+  const selectedPost = posts.find((post)=> post.id === id);
+  if (!selectedPost){
+    return res.status(404).json({error: "Post not found"})
+  }else{
+    res.json(selectedPost);
+  };
+});
 
 //CHALLENGE 3: POST a new post
 
