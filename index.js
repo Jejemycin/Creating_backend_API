@@ -80,6 +80,19 @@ app.patch("/posts/:id", (req, res) => {
   res.json(post);
 });
 
+/*                       OR
+
+app.patch("/posts/:id", (req, res) => {
+  const post = posts.find((p) => p.id === parseInt(req.params.id));
+  if (!post) return res.status(404).json({ message: "Post not found" });
+
+  if (post){
+    post.title = req.body.title || post.title;
+    post.content = req.body.content || post.content;
+    post.author = req.body.author || post.author;
+  };
+});
+*/
 
 
 //CHALLENGE 5: DELETE a specific post by providing the post id.
