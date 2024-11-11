@@ -106,7 +106,16 @@ app.delete("/posts/:id", (req, res)=>{
   res.json({postDeleted : deletedPost});
   };
 });
-                    
+
+/*                       OR
+
+app.delete("/posts/:id", (req, res) => {
+  const index = posts.findIndex((p) => p.id === parseInt(req.params.id));
+  if (index === -1) return res.status(404).json({ message: "Post not found" });
+  posts.splice(index, 1);
+  res.json({ message: "Post deleted" });
+});
+*/                 
 
 
 app.listen(port, () => {
